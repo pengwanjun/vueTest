@@ -1,6 +1,6 @@
 <template>
 	<div class="template2">
-		<h1 :class="{'active':$store.state.helloWorld.baseData[value].canOpera}">{{$store.state.helloWorld.baseData[value].name}}：{{ $store.state.helloWorld.baseData[value].curValue }}</h1>
+		<h1 :class="value[2]">{{value[0]}}：{{ value[1] }}</h1>
 	</div>
 </template>
 
@@ -8,7 +8,7 @@
 	export default {
 		name: 'template2',
 		props: {
-			value: Number
+			value: Array
 		},
 		data() {
 			return {}
@@ -17,12 +17,10 @@
 			changeData(param) {
 				if(param == 37) {
 					//左键
-//					this.$emit('changenum', -1);
+					this.$emit('changenum', -1);
 				} else {
-					this.$store.state.helloWorld.baseData[this.value].curValue++;
-					console.log(this.$store.state.helloWorld.baseData[this.value].curValue);
 					//右键
-//					this.$emit('changenum', 1);
+					this.$emit('changenum', 1);
 				}
 			}
 		}
